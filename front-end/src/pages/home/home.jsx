@@ -5,7 +5,7 @@ import { MyToolbar } from '/src/tools/Toolbar.jsx';
 import { MyTextAria } from '/src/tools/TextField';
 import { RatingControl } from '/src/tools/Rate';
 
-export default function Home() {
+export default function HomePage() {
 
     return <div className='container'>
         <div className='toolbar'><MyToolbar /></div>
