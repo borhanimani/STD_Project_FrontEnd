@@ -14,7 +14,7 @@ export function FoodCard({ clsName }) {
 
     return (
         <Card className={clsName + '-container'}>
-            
+
             <CardMedia
                 component="img"
                 alt="green iguana"
@@ -23,13 +23,13 @@ export function FoodCard({ clsName }) {
             />
             <CardContent sx={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%' }} >
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)' }}>Halopino</div>
-                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)' }}>$13.88</div>
+                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginLeft: 10 }}>pizaa-Halopino</div>
+                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginRight: 10 }}>$13.88</div>
                 </div>
                 <div style={{ fontFamily: 'sans-serif', marginTop: 8, fontSize: 15, padding: 7, wordWrap: 'break-word', color: "gray" }}>cheese,halopino,sause,onion</div>
             </CardContent>
             <CardActions sx={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginRight: 2 }}>
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: 120 }}>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: 120, marginLeft: 10, marginRight: 10 }}>
                     <IconButton onClick={() => (value > 0) ? setValue(value - 1) : setValue(value)}>
                         <RemoveIcon sx={{ width: 30 }} />
                     </IconButton>
