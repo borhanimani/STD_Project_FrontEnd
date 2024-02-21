@@ -104,12 +104,12 @@ export function MyToolbar() {
                         component="a"
                         href="#app-bar-with-responsive-menu"
                         sx={{
-                            mr: 2,
+                            mr: 1,
                             display: { xs: 'flex', md: 'none' },
                             flexGrow: 1,
                             fontFamily: 'monospace',
                             fontWeight: 700,
-                            letterSpacing: '.3rem',
+                            letterSpacing: '.rem',
                             color: 'inherit',
                             textDecoration: 'none',
                         }}
@@ -131,10 +131,10 @@ export function MyToolbar() {
                     <Box sx={{ flexGrow: 0 }}>
 
                         <Tooltip>
-                            <IconButton sx={{ marginRight: 3 }}>
+                            <IconButton sx={{ marginRight: 1 }}>
                                 <CustomizedBadges />
                             </IconButton>
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0}}>
                                 <Avatar alt="Guest">G</Avatar>
                             </IconButton>
                         </Tooltip>
@@ -180,8 +180,8 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 export function CustomizedBadges() {
     return (
         <IconButton aria-label="cart">
-            <StyledBadge badgeContent={4} color="warning" sx={{color: grey[50]}}>
-                <ShoppingCartIcon  />
+            <StyledBadge badgeContent={4} color="warning" sx={{ color: grey[50] }}>
+                <ShoppingCartIcon />
             </StyledBadge>
         </IconButton>
     );

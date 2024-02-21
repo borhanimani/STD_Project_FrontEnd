@@ -7,7 +7,7 @@ import { RatingControl } from '/src/tools/Rate';
 
 export default function HomePage() {
 
-    return <div className='container'>
+    return <div className='home-container'>
         <div className='toolbar'><MyToolbar /></div>
         <div className='body-part'>
             <div className='text-view'>
