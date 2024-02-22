@@ -12,10 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { grey } from '@mui/material/colors';
-
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
-// import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const pages = ['Home', 'Order Menu', 'Contact Us'];
