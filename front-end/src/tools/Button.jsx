@@ -1,7 +1,9 @@
 import Button from '@mui/material/Button';
 import { deepOrange } from '@mui/material/colors';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 
-export function FillColorBtn({ textValue,clsName }) {
+export function FillColorBtn({ textValue, clsName }) {
     return <Button className={clsName}
         variant='contained'
         sx={
@@ -28,33 +30,10 @@ export function OutLineBtn({ textValue }) {
     >{textValue}</Button>
 }
 
-// export function OrderBtn() {
-//     return <Button
-//         variant='contained'
-//         sx={
-//             {
-//                 fontSize: 20,
-//                 fontFamily: 'sans-serif',
-//                 // fontWeight: 'bold',
-//                 bgcolor: deepOrange[500],
-//                 "&:hover": { bgcolor: deepOrange[700] },
-//                 width: 300,
-//                 height: 50,
-//                 textTransform: 'none'
-//             }
-//         }
-//     >Order Now</Button>
-// }
-
-// export function Btn({ value }) {
-//     return <Button className='fff'
-//         variant='outlined'
-//         sx={
-//             {
-//                 borderColor: deepOrange[500],
-//                 color: deepOrange[500],
-//                 "&:hover": { bgcolor: deepOrange[50], borderColor: deepOrange[500] }
-//             }
-//         }
-//     >{value}</Button>
-// }
+export function DeleteBtn() {
+    return <div>
+        <IconButton aria-label="delete">
+            <DeleteIcon sx={{color:'red'}} />
+        </IconButton>
+    </div>
+}
