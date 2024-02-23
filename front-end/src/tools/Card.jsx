@@ -82,40 +82,6 @@ export function Counter() {
     </>
 }
 
-// export function OrderCard({ clsName }) {
-
-//     return (
-
-//         <Card className={clsName + '-container'}>
-//             <div style={{ width: 'auto' }}>
-//                 <CardMedia
-//                     component="img"
-//                     alt="green iguana"
-//                     height="100%"
-//                     image="/src/assets/tomato-2780424_1920.jpg"
-//                     sx={{ width: '100%', borderRadius: 10 }}
-//                 />
-//             </div>
-//             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-//                 <CardContent sx={{ display: 'flex', flexDirection: 'column', width: '100%', height: '30%', border: 'solid' }} >
-//                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-//                         <div style={{ fontSize: 20, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginLeft: 5, border: 'solid' }}>pizaa-Halopino</div>
-//                         <div style={{ fontSize: 20, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginRight: 40, border: 'solid' }}>$13.88</div>
-//                     </div>
-//                     {/* <div style={{ fontFamily: 'sans-serif', marginTop: 8, fontSize: 15, padding: 7, wordWrap: 'break-word', color: "gray" }}></div> */}
-//                 </CardContent>
-//                 <CardActions sx={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'center', border: 'solid' }}>
-//                     <div style={{ marginRight: 30, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
-//                         {/* <FillColorBtn textValue={'Buy'} clsName={'add-to-cart-btn'} /> */}
-//                         <Counter />
-//                         <DeleteBtn />
-//                     </div>
-//                 </CardActions>
-//             </div>
-//         </Card>
-//     );
-// }
-
 export function OrderCard({ clsName }) {
 
     const [value, setValue] = React.useState(0);
@@ -141,7 +107,6 @@ export function OrderCard({ clsName }) {
                     <Counter />
                     <DeleteBtn />
                 </div>
-                {/* <FillColorBtn textValue={'Add to Cart'} clsName={'add-to-cart-btn'} /> */}
 
             </CardActions>
         </Card>
