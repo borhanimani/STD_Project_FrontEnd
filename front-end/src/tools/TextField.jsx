@@ -25,7 +25,29 @@ export function MyTextAria() {
     );
 }
 
-export function SimpleTextField({label}) {
+export function BorderTextAria() {
+    return (
+        <Box
+            component="form"
+            sx={{
+                width: '90%',
+                '& .MuiTextField-root': { m: 1, width: '100%' }
+            }}
+            noValidate
+            autoComplete="off"
+        >
+            <TextField
+                id="outlined-multiline-static"
+                label=""
+                multiline
+                rows={3}
+                defaultValue=""
+            />
+        </Box>
+    );
+}
+
+export function SimpleTextField({ label }) {
     return (
         <Box
             component="form"
