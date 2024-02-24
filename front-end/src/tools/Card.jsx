@@ -7,7 +7,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { FillColorBtn, DeleteBtn } from './Button';
-// import DeleteIcon from '@mui/icons-material/Delete';
 import { deepOrange } from '@mui/material/colors';
 
 
