@@ -7,11 +7,13 @@ import { SimpleTextField, PasswordTextField, NumberTextField } from '/src/tools/
 
 export default function SignPage() {
 
-    const [isSignin, setIsSignin] = useState('hidden')
+    const [isSignin, setIsSignin] = useState('visible')
+    const [isSignup, setSignup] = useState('hidden')
 
     function chagneVisibility() {
-        (isSignin === 'visible') ? setIsSignin('hidden') : setIsSignin('visible')
-        console.log(isSignin);
+        (isSignin === 'visible') ? setIsSignin('hidden') : setIsSignin('visible');
+        (isSignup === 'visible') ? setSignup('hidden') : setSignup('visible');
+        console.log(isSignup);
     }
 
     return <div className="sign-page-container">
@@ -21,14 +23,16 @@ export default function SignPage() {
             <BasicSwitches changed={chagneVisibility} />
             <div className='text-box'>Sign Up</div>
         </div>
-        <div className="sign-box">
+        <div className="sign-box" >
             <div className='sign-in-box ' style={{ visibility: isSignin }}>
+                <div className='title-font'>Sign In</div>
                 <SimpleTextField label={'Username'} />
                 <PasswordTextField />
                 <FillColorBtn textValue={"Sign In"} clsName={'sign-in-btn'} />
             </div>
-            <div className='sign-up'>
-                <div className='sp-info-box'>
+            <div className='sign-up-box' style={{ visibility: isSignup }} >
+                <div className='title-font'>Sign Up</div>
+                <div className='sp-info-box' >
                     <SimpleTextField label={'Firstname'} />
                     <SimpleTextField label={'Lastname'} />
                     <NumberTextField />
