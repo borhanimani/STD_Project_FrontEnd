@@ -7,9 +7,9 @@ import SignPage from './pages/Signin-Signup/Sign.jsx'
 import AdminPage from './pages/Admin/Admin.jsx'
 
 export default function app() {
-    // return <HomePage />
+    return <HomePage />
     // return <MenuPage />
     // return <OrderPage />
     // return <SignPage />
-    return <AdminPage />
+    // return <AdminPage />
 }

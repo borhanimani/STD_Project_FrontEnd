@@ -9,12 +9,12 @@ export default function HomePage() {
 
     return <div className='home-container'>
         <div className='toolbar'><MyToolbar /></div>
-        <div className='body-part'>
-            <div className='text-view'>
-                <div className='text-box'>
+        <div className='home-body-part'>
+            <div className='home-text-view'>
+                <div className='home-text-box'>
                     <div className='text1'>Bests is yours</div>
                     <div className='text2 font'>The first pizza resurant website, with different type of foods for you! Enjoy your time by ordering online, and hanging out with your family and friends! This is an example project  </div>
-                    <div className='order-btn'> <FillColorBtn textValue="Order Now" clsName="fill-color-btn"/> </div>
+                    <div className='home-order-btn'> <FillColorBtn textValue="Order Now" clsName="fill-color-btn"/> </div>
                 </div>
             </div>
             <div className='image-view'></div>
