@@ -17,7 +17,7 @@ import { styled } from '@mui/material/styles';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link, json } from 'react-router-dom';
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Edit', 'Logout'];
 
 export function MyToolbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -73,15 +73,19 @@ export function MyToolbar() {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                 >
-                    {settings.map((setting) => (
-                        <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                            <Typography textAlign="center">{setting}</Typography>
+                    <Link to={'/edit'}>
+                        <MenuItem key={'edit'} onClick={handleCloseUserMenu}>
+                            <Typography textAlign="center">{"Edit"}</Typography>
                         </MenuItem>
-                    ))}
+                    </Link>
+
+                    <MenuItem key={'logout'} onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">{"Sign Out"}</Typography>
+                    </MenuItem>
                 </Menu>
             </Box>
         } else {
-            return <Box sx={{ flexGrow: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center',alignItems:'center' }}>
+            return <Box sx={{ flexGrow: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                 <Tooltip>
                     <IconButton sx={{ marginRight: 1 }}>
                         <CustomizedBadges />
@@ -241,10 +245,12 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export function CustomizedBadges() {
     return (
-        <IconButton aria-label="cart">
-            <StyledBadge badgeContent={4} color="warning" sx={{ color: grey[50] }}>
-                <ShoppingCartIcon />
-            </StyledBadge>
-        </IconButton>
+        <Link to={'/orders'}>
+            <IconButton aria-label="cart">
+                <StyledBadge badgeContent={1} color="warning" sx={{ color: grey[50] }}>
+                    <ShoppingCartIcon />
+                </StyledBadge>
+            </IconButton>
+        </Link>
     );
 }
