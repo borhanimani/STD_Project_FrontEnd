@@ -1,0 +1,115 @@
+.signup-page-container {
+    background-color: rgb(246, 246, 246);
+    background-image: url('/src/assets/pizza-4968645_1920.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 98vw;
+    height: 100vh;
+    /* border: solid black; */
+    animation: fadeIn 0.25s;
+}
+
+.signup-up-box {
+    background-color: rgb(239, 220, 239);
+    width: 45%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+    border: solid purple;
+    color: purple;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.signup-up-btn {
+    width: 200px;
+    background-color: blueviolet !important;
+}
+
+
+.sp-info-box {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.sp-box-column {
+    display: flex;
+    flex-direction: row;
+}
+
+.sp-user-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-title-font {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-family: sans-serif;
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width:920px) {
+
+    .signup-page-container {
+        background-color: rgb(246, 246, 246);
+        background-image: url('/src/assets/pizza-4968645_1920.jpg');
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 98vw;
+        height: 120vh;
+        /* border: solid black; */
+        animation: fadeIn 0.25s;
+    }
+
+    .signup-up-box {
+        background-color: rgb(239, 220, 239);
+        width: 90%;
+        height: 75%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        border: solid purple;
+        color: purple;
+        border-radius: 10px;
+        margin: 10px;
+    }
+
+    .sp-info-box {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .sp-box-column {
+        display: flex;
+        flex-direction: column;
+    }
+}
