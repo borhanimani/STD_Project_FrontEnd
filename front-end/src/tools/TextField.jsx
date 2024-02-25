@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-export function MyTextAria() {
+export function MyTextAria({ value, calledFunction }) {
     return (
         <Box
             component="form"
@@ -20,6 +20,8 @@ export function MyTextAria() {
                 maxRows={3}
                 variant="standard"
                 color='warning'
+                onChange={calledFunction}
+                value={value}
             />
         </Box>
     );

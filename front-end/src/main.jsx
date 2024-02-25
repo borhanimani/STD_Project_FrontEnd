@@ -8,6 +8,7 @@ import OrderPage from './pages/Order/Order.jsx'
 import SignUpPage from './pages/Signin-Signup/Signup.jsx'
 import SignInPage from './pages/Signin-Signup/Signin.jsx'
 import AdminPage from './pages/Admin/Admin.jsx'
+import ContactPage from './pages/ContactUs/Contact.jsx'
 import "react-router-dom";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/contact",
+    element: <ContactPage />
+  },
+  {
+    path: "/edit",
     element: <AdminPage />
   }
 ]);

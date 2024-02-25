@@ -5,8 +5,17 @@ import { MyToolbar } from '/src/tools/Toolbar.jsx';
 import { MyTextAria } from '/src/tools/TextField';
 import { RatingControl } from '/src/tools/Rate';
 import { Link } from 'react-router-dom';
+import { CommentCard } from '/src/tools/Card';
 
 export default function HomePage() {
+
+    const commentList = [{ name: 'Harry', detail: 'dpflskajg;lkdsjg;lskadakdfjlkajf;aslkdfj;sdgj;dglskjg;sdklgj;ldsjgskdgjas;dlkgjjg;sldkjga;lsdkjgsl;dkjga;skldgjdjs;g;lskdjg;sldgs', rate: "1" }]
+    const [list, setList] = React.useState(commentList);
+
+    function makeComment(commentParams) {
+        const newList = [...list, commentParams];
+        setList(newList);
+    }
 
     return <div className='home-container'>
         <div className='toolbar'><MyToolbar /></div>
@@ -22,18 +31,44 @@ export default function HomePage() {
         </div>
         <div className='mid-bottom-part'>
             <div className='comments-box'>
-                <div className='comments-view'></div>
-                <CommentBox />
+                <ShowComments list={list} />
+                <CommentBox called={makeComment} />
             </div>
         </div>
         <div></div>
     </div>
 }
 
-export function CommentBox() {
+export function CommentBox({ called }) {
+
+    const [textAriaValue, setTextAValue] = React.useState('');
+    const [rateValue, setRateValue] = React.useState(0);
+
+    function makeInformation() {
+        const comment = { name: "Admin", detail: textAriaValue, rate: rateValue };
+        setTextAValue('')
+        setRateValue(0)
+        called(comment);
+    }
+
+
+
     return <div className='make-comment'>
-        <MyTextAria />
-        <RatingControl />
-        <FillColorBtn textValue="Post" clsName="rate-btn " />
+        <MyTextAria value={textAriaValue} calledFunction={(event) => setTextAValue(event.target.value)} />
+        <RatingControl value={rateValue} calledFunction={setRateValue} />
+        <FillColorBtn textValue="Post" clsName="rate-btn " calledFunction={makeInformation} />
     </div>
+}
+
+export function ShowComments({ list }) {
+
+    return <div className='comments-view'>
+        {
+            list.map((item) => {
+                console.log(list.length);
+                return <CommentCard clsName={'cmt-cart'} info={item} />
+            })
+        }
+    </div>
+
 }

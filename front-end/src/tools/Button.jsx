@@ -6,7 +6,7 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
-export function FillColorBtn({ textValue, clsName }) {
+export function FillColorBtn({ textValue, clsName, calledFunction }) {
     return <Button className={clsName}
         variant='contained'
         sx={
@@ -17,10 +17,12 @@ export function FillColorBtn({ textValue, clsName }) {
                 "&:hover": { bgcolor: deepOrange[700] }
             }
         }
+        onClick={calledFunction}
     >{textValue}</Button>
 }
 
-export function OutLineBtn({ textValue, clsName }) {
+export function OutLineBtn({ textValue, clsName, calledFunction }) {
+
     return <Button className={clsName}
         variant='outlined'
         sx={
@@ -30,15 +32,17 @@ export function OutLineBtn({ textValue, clsName }) {
                 "&:hover": { bgcolor: deepOrange[50], borderColor: deepOrange[500] }
             }
         }
-    >{textValue}</Button>
+        onClick={calledFunction()}
+    > {textValue}</Button >
 }
 
-export function DeleteBtn() {
+export function DeleteBtn({ calledFunction }) {
     return <div>
-        <IconButton aria-label="delete">
+        <IconButton aria-label="delete" onClick={calledFunction}>
             <DeleteIcon sx={{ color: 'red' }} />
         </IconButton>
     </div>
+
 }
 
 const VisuallyHiddenInput = styled('input')({

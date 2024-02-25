@@ -8,7 +8,12 @@ import CardMedia from '@mui/material/CardMedia';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { FillColorBtn, DeleteBtn } from './Button';
 import { deepOrange } from '@mui/material/colors';
-
+import { styled } from '@mui/material/styles';
+import CardHeader from '@mui/material/CardHeader';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
+import { red } from '@mui/material/colors';
+import { RatingReadOnly } from './Rate';
 
 export function FoodCard({ clsName }) {
 
@@ -102,11 +107,51 @@ export function OrderCard({ clsName }) {
                 <div style={{ fontFamily: 'sans-serif', marginTop: 8, fontSize: 15, padding: 7, wordWrap: 'break-word', color: "gray" }}>cheese,halopino,sause,onion</div>
             </CardContent>
             <CardActions sx={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginRight: 2 }}>
-                <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', width: '100%', marginLeft: 10, marginRight: 30}}>
+                <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', width: '100%', marginLeft: 10, marginRight: 30 }}>
                     <Counter />
                     <DeleteBtn />
                 </div>
 
+            </CardActions>
+        </Card>
+    );
+}
+
+const ExpandMore = styled((props) => {
+    const { expand, ...other } = props;
+    return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+    }),
+}));
+
+export function CommentCard({ clsName, info }) {
+
+    return (
+        <Card className={clsName} sx={{ maxWidth: 345 }}>
+            <CardHeader
+                avatar={
+                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                        {info.name.slice(0, 1)}
+                    </Avatar>
+                }
+                title={info.name}
+                // subheader="September 14, 2016"
+                sx={{ borderBottom: 'solid 1px gray', margin: 1 }}
+            />
+            <CardContent
+                sx={{ padding: 0, borderBottom: 'solid 1px gray', margin: 3 }}>
+                {/* <MultiTextAria text={info.detail} /> */}
+                <Typography variant="body2" color="text.secondary"
+                    sx={{ wordBreak: 'break-word', marginBottom: 5 }} >
+                    {info.detail}
+                </Typography>
+            </CardContent >
+            <CardActions sx={{ marginLeft: 3, padding: 0 }}>
+                <RatingReadOnly rateValue={info.rate} />
             </CardActions>
         </Card>
     );
