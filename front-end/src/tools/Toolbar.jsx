@@ -81,7 +81,12 @@ export function MyToolbar() {
                 </Menu>
             </Box>
         } else {
-            return <Box sx={{ flexGrow: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+            return <Box sx={{ flexGrow: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center',alignItems:'center' }}>
+                <Tooltip>
+                    <IconButton sx={{ marginRight: 1 }}>
+                        <CustomizedBadges />
+                    </IconButton>
+                </Tooltip>
                 <Link to={'/Signin'}><Button
                     variant='outlined'
                     sx={{
