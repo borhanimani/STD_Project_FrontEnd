@@ -15,8 +15,8 @@ import { grey } from '@mui/material/colors';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Link, json } from 'react-router-dom';
 
-const pages = ['Home', 'Order Menu', 'Contact Us'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export function MyToolbar() {
@@ -30,13 +30,82 @@ export function MyToolbar() {
         setAnchorElUser(event.currentTarget);
     };
 
-    const handleCloseNavMenu = () => {
+    // const handleCloseNavMenu = () => {
+    //     setAnchorElNav(null);
+    //     console.log('here');
+    // };
+
+    function handleCloseNavMenu(a) {
         setAnchorElNav(null);
+        console.log(a);
+
     };
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    function showOption() {
+        if (localStorage.length != 0) {
+            localStorage.clear()
+            return <Box sx={{ flexGrow: 0 }}>
+                <Tooltip>
+                    <IconButton sx={{ marginRight: 1 }}>
+                        <CustomizedBadges />
+                    </IconButton>
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                        <Avatar alt="Guest">G</Avatar>
+                    </IconButton>
+                </Tooltip>
+                <Menu
+                    sx={{ mt: '45px' }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                >
+                    {settings.map((setting) => (
+                        <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                            <Typography textAlign="center">{setting}</Typography>
+                        </MenuItem>
+                    ))}
+                </Menu>
+            </Box>
+        } else {
+            return <Box sx={{ flexGrow: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                <Link to={'/Signin'}><Button
+                    variant='outlined'
+                    sx={{
+                        borderColor: 'white',
+                        color: 'white',
+                        marginRight: 0.5,
+                        padding: 1,
+                        "&:hover": { bgcolor: grey[800], borderColor: grey[100] }
+                    }}
+                    onClick={() => localStorage.setItem('sign-state', 'login')}
+                >Sign In</Button></Link>
+                <Link to={'/signup'}><Button
+                    variant='contained'
+                    sx={{
+                        bgcolor: grey[600],
+                        marginRight: 0.5,
+                        padding: 1,
+                        "&:hover": { bgcolor: grey[800] }
+                    }}
+                    onClick={() => localStorage.setItem('sign-state', 'signup')}
+                >Sign Up</Button></Link>
+            </Box>
+        }
+    }
 
     return (
         <AppBar position="static" sx={{ backgroundColor: grey[900] }}>
@@ -46,7 +115,6 @@ export function MyToolbar() {
                         variant="h6"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
                         sx={{
                             mr: 20,
                             display: { xs: 'none', md: 'flex' },
@@ -89,18 +157,27 @@ export function MyToolbar() {
                                 display: { xs: 'block', md: 'none', padding: '30px' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                            <Link to={"/"} style={{ textDecoration: 'none' }}>
+                                <MenuItem key={'home'}>
+                                    <Typography textAlign="center" sx={{ color: 'black' }}>{"Home"}</Typography>
                                 </MenuItem>
-                            ))}
+                            </Link>
+                            <Link to={"/menu"} style={{ textDecoration: 'none' }}>
+                                <MenuItem key={'menu'}>
+                                    <Typography textAlign="center" sx={{ color: 'black' }}>{"Order Menu"}</Typography>
+                                </MenuItem>
+                            </Link>
+                            <Link to={"/contact"} style={{ textDecoration: 'none' }}>
+                                <MenuItem key={'contact'}>
+                                    <Typography textAlign="center" sx={{ color: 'black' }}>{"Contact Us"}</Typography>
+                                </MenuItem>
+                            </Link>
                         </Menu>
                     </Box>
                     <Typography
                         variant="h5"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
                         sx={{
                             mr: 1,
                             display: { xs: 'flex', md: 'none' },
@@ -115,53 +192,35 @@ export function MyToolbar() {
                         PizzaB
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
+                        <Link to={'/'} style={{ textDecoration: 'none' }}>
                             <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
+                                key={'home'}
                                 sx={{ my: 2, color: 'white', display: 'block', marginLeft: 10 }}
                             >
-                                {page}
+                                {'Home'}
                             </Button>
-                        ))}
+                        </Link>
+                        <Link to={'/menu'} style={{ textDecoration: 'none' }}>
+                            <Button
+                                key={'menu'}
+                                sx={{ my: 2, color: 'white', display: 'block', marginLeft: 10 }}
+                            >
+                                {'Menu'}
+                            </Button>
+                        </Link>
+                        <Link to={'/contact'} style={{ textDecoration: 'none' }}>
+                            <Button
+                                key={'contact'}
+                                sx={{ my: 2, color: 'white', display: 'block', marginLeft: 10 }}
+                            >
+                                {'Contact Us'}
+                            </Button>
+                        </Link>
                     </Box>
-
-                    <Box sx={{ flexGrow: 0 }}>
-
-                        <Tooltip>
-                            <IconButton sx={{ marginRight: 1 }}>
-                                <CustomizedBadges />
-                            </IconButton>
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0}}>
-                                <Avatar alt="Guest">G</Avatar>
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
+                    {showOption()}
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar >
     );
 }
 // export default ResponsiveAppBar;

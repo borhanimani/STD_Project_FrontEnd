@@ -26,7 +26,7 @@
     width: 100%;
 }
 
-.body-part {
+.home-body-part {
     display: flex;
     flex-direction: row;
     /* flex-wrap: wrap-reverse; */
@@ -36,7 +36,7 @@
     background-color: rgb(246, 246, 246);
 }
 
-.text-view {
+.home-text-view {
     display: flex;
     flex-direction: row;
     align-content: center;
@@ -47,7 +47,7 @@
     /* border: solid red; */
 }
 
-.text-box {
+.home-text-box {
     display: flex;
     flex-direction: column;
     align-content: space-around;
@@ -78,7 +78,7 @@
     margin-bottom: 30px;
 }
 
-.order-btn {
+.home-order-btn {
     display: flex;
     justify-content: flex-end;
     width: 100%;
@@ -91,7 +91,7 @@
 }
 
 
-.image-view {
+.home-image-view {
     background-image: url('/src/assets/pizza-2589569_1920.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -135,8 +135,6 @@
     width: 70%;
     margin: 20px;
     border-radius: 5px;
-    border: solid black;
-
 }
 
 .make-comment {
@@ -158,29 +156,29 @@
 /* for Phone response */
 
 @media (max-width:920px) {
-    .body-part {
+    .home-body-part {
         display: flex;
         flex-direction: column-reverse;
         /* flex-wrap: wrap-reverse; */
         /* border: solid gold; */
-        width: 100;
+        width: 100%;
         height: 50%;
         background-color: rgb(223, 223, 223);
         margin: 0;
     }
 
-    .text-view {
+    .home-text-view {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-content: center;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         width: 100%;
         height: 100%;
         /* border: solid red; */
     }
 
-    .image-view {
+    .home-image-view {
         background-image: url('/src/assets/pizza-2589569_1920.jpg');
         background-size: cover;
         background-repeat: no-repeat;
@@ -204,13 +202,45 @@
     }
 
     .font {
+        display: flex;
+
         font-family: sans-serif;
 
+    }
+
+    .home-text-box {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        width: 100%;
+        height: 45%;
+        /* border: solid black 1px; */
+        margin-left: 0;
+        padding: 10px;
     }
 
     .text1 {
         font-size: 50px;
         margin-bottom: 20px;
+    }
+
+    .text2 {
+        display: flex;
+        flex-wrap: wrap;
+        word-wrap: break-word;
+        width: 100%;
+
+        font-size: 20px;
+        color: rgb(110, 110, 110);
+        margin-bottom: 30px;
+    }
+
+    .home-order-btn {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
     }
 
     .order-btn {
@@ -246,8 +276,8 @@
         width: 100%;
         height: 50%;
         margin: 0px;
+        margin-bottom: 10px;
         border-radius: 5px;
-        border: solid black;
     }
 
     .make-comment {
