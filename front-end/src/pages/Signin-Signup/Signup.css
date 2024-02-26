@@ -12,7 +12,7 @@
 }
 
 .signup-up-box {
-    background-color: rgb(239, 220, 239);
+    background-color: rgba(255, 255, 255, 0.964);
     width: 45%;
     height: 80%;
     display: flex;
@@ -88,7 +88,7 @@
     }
 
     .signup-up-box {
-        background-color: rgb(239, 220, 239);
+        background-color: rgba(255, 255, 255, 0.964);
         width: 90%;
         height: 75%;
         display: flex;
