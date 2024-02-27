@@ -4,12 +4,13 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { deepOrange, grey, orange } from '@mui/material/colors';
 
-export function MenuTabs() {
-  const [value, setValue] = React.useState('one');
+export function MenuTabs({ calledFunction, value }) {
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    calledFunction(newValue);
   };
+
+  const tilteList = ['Pizza', 'Burger', 'Drinks', 'Fries']
 
   return (
     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
@@ -25,10 +26,15 @@ export function MenuTabs() {
         // TabIndicatorProps={{sx:{backgroundColor: deepOrange[500]}}}
         centered
       >
-        <Tab value="one" label="Pizza" />
-        <Tab value="two" label="Buger" />
-        <Tab value="three" label="Drinks" />
-        <Tab value="four" label="Fries" />
+        {
+          tilteList.map((title) => {
+            return <Tab value={title} label={title} />
+          })
+        }
+        {/* <Tab value="Pizza" label="Pizza" />
+        <Tab value="Burger" label="Buger" />
+        <Tab value="Drinks" label="Drinks" />
+        <Tab value="Fries" label="Fries" /> */}
       </Tabs>
     </Box>
   );

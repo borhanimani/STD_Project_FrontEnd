@@ -16,12 +16,17 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link, json } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const settings = ['Edit', 'Logout'];
 
-export function MyToolbar() {
+export function MyToolbar({ valueOfBag }) {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const numberOfBag = (sessionStorage != null) ? Number.parseInt(sessionStorage.getItem('valueOfBag')) : 0;
+    console.log('nob', numberOfBag);
+
+    console.log('loc', sessionStorage);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -29,11 +34,6 @@ export function MyToolbar() {
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
-
-    // const handleCloseNavMenu = () => {
-    //     setAnchorElNav(null);
-    //     console.log('here');
-    // };
 
     function handleCloseNavMenu(a) {
         setAnchorElNav(null);
@@ -45,13 +45,13 @@ export function MyToolbar() {
         setAnchorElUser(null);
     };
 
-    function showOption() {
-        if (localStorage.length != 0) {
-            localStorage.clear()
+    function showOption(orderList) {
+        if (false) {
+            // localStorage.clear()
             return <Box sx={{ flexGrow: 0 }}>
                 <Tooltip>
                     <IconButton sx={{ marginRight: 1 }}>
-                        <CustomizedBadges />
+                        <CustomizedBadges value={valueOfBag} />
                     </IconButton>
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                         <Avatar alt="Guest">G</Avatar>
@@ -88,7 +88,7 @@ export function MyToolbar() {
             return <Box sx={{ flexGrow: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                 <Tooltip>
                     <IconButton sx={{ marginRight: 1 }}>
-                        <CustomizedBadges />
+                        <CustomizedBadges value={numberOfBag} />
                     </IconButton>
                 </Tooltip>
                 <Link to={'/Signin'}><Button
@@ -243,11 +243,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     },
 }));
 
-export function CustomizedBadges() {
+export function CustomizedBadges({ value }) {
     return (
         <Link to={'/orders'}>
             <IconButton aria-label="cart">
-                <StyledBadge badgeContent={1} color="warning" sx={{ color: grey[50] }}>
+                <StyledBadge badgeContent={(isNaN(value)) ? 0 : value} color="warning" sx={{ color: grey[50] }}>
                     <ShoppingCartIcon />
                 </StyledBadge>
             </IconButton>

@@ -15,9 +15,19 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import { RatingReadOnly } from './Rate';
 
-export function FoodCard({ clsName }) {
+export function FoodCard({ clsName, information, calledFunction }) {
 
-    const [value, setValue] = React.useState(0);
+    // const [countValue, setCountValue] = React.useState(0)
+
+    const [resultNumber, setNumber] = React.useState(0);
+
+    function manageNumber(isAdd) {
+        (isAdd) ? setNumber(resultNumber + 1) : setNumber(resultNumber - 1)
+    }
+
+    function sendInfo() {
+        calledFunction(resultNumber, information)
+    }
 
     return (
         <Card className={clsName + '-container'}>
@@ -30,16 +40,16 @@ export function FoodCard({ clsName }) {
             />
             <CardContent sx={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%' }} >
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginLeft: 10 }}>pizaa-Halopino</div>
-                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginRight: 10 }}>$13.88</div>
+                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginLeft: 10 }}>{information.title}</div>
+                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginRight: 10 }}>${Number.parseInt(information.price)}</div>
                 </div>
-                <div style={{ fontFamily: 'sans-serif', marginTop: 8, fontSize: 15, padding: 7, wordWrap: 'break-word', color: "gray" }}>cheese,halopino,sause,onion</div>
+                <div style={{ fontFamily: 'sans-serif', marginTop: 8, fontSize: 15, padding: 7, wordWrap: 'break-word', color: "gray" }}>{information.detail}</div>
             </CardContent>
             <CardActions sx={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginRight: 2 }}>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: 120, marginLeft: 10, marginRight: 10 }}>
-                    <Counter />
+                    <Counter calledFunction={manageNumber} value={resultNumber} />
                 </div>
-                <FillColorBtn textValue={'Add to Cart'} clsName={'add-to-cart-btn'} />
+                <FillColorBtn textValue={'Add to Cart'} clsName={'add-to-cart-btn'} calledFunction={sendInfo} />
             </CardActions>
         </Card>
     );
@@ -69,21 +79,6 @@ export function CartCard({ clsName }) {
             </CardActions>
         </Card>
     );
-}
-
-export function Counter() {
-    const [value, setValue] = React.useState(0);
-    return <>
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <IconButton sx={{ width: 40 }} onClick={() => (value > 0) ? setValue(value - 1) : setValue(value)}>
-                <RemoveIcon sx={{ width: 30, color: deepOrange[500] }} />
-            </IconButton>
-            <div contentEditable='false' style={{ fontSize: 25, margin: 2, fontFamily: 'sans-serif', padding: 3, marginRight: 5, marginLeft: 5 }}>{value}</div>
-            <IconButton sx={{ bgcolor: deepOrange[500], width: 40, "&:hover": { bgcolor: deepOrange[700] } }} onClick={() => setValue(value + 1)}>
-                <AddIcon sx={{ width: 30, color: 'white' }} />
-            </IconButton>
-        </div>
-    </>
 }
 
 export function OrderCard({ clsName }) {
@@ -155,4 +150,21 @@ export function CommentCard({ clsName, info }) {
             </CardActions>
         </Card>
     );
+}
+
+export function Counter({ calledFunction, value }) {
+    // const [value, setValue] = React.useState(0);
+    // calledFunction(value)
+
+    return <>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <IconButton sx={{ width: 40 }} onClick={() => (value > 0) ? calledFunction(false) : value}>
+                <RemoveIcon sx={{ width: 30, color: deepOrange[500] }} />
+            </IconButton>
+            <div contentEditable='false' style={{ fontSize: 25, margin: 2, fontFamily: 'sans-serif', padding: 3, marginRight: 5, marginLeft: 5 }}>{value}</div>
+            <IconButton sx={{ bgcolor: deepOrange[500], width: 40, "&:hover": { bgcolor: deepOrange[700] } }} onClick={() => calledFunction(true)}>
+                <AddIcon sx={{ width: 30, color: 'white' }} />
+            </IconButton>
+        </div>
+    </>
 }
