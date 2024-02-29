@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FillColorBtn } from '/src/tools/Button';
 import { SimpleTextField, PasswordTextField, NumberTextField } from '/src/tools/TextField';
 import { MyToolbar } from '/src/tools/Toolbar.jsx';
-import { post,get } from '/src/utils/Connection';
+import { post, get } from '/src/utils/Connection';
 import { CircularColor } from '/src/tools/Progress';
 import { useNavigate } from 'react-router-dom';
 
@@ -40,17 +40,18 @@ export default function SignUpPage() {
     }
 
     function signin() {
-        const body = { "username": username, "password": password }
+        const parameter = { "username": username, "password": password }
         try {
-            get('/signin', body).then((result) => {
+            get('/signin', parameter).then((result) => {
                 if (result.length == 0) {
                     console.log('sin', result);
+                    setShowProgress('hidden');
                     navigate('/')
                 }
             })
         } catch (error) {
-            setShowProgress('hidden');
             alert(error);
+            setShowProgress('hidden');
         }
     }
 

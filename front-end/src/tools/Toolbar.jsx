@@ -15,8 +15,7 @@ import { grey } from '@mui/material/colors';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Link, json } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, json, useNavigate } from 'react-router-dom';
 
 const settings = ['Edit', 'Logout'];
 
@@ -25,25 +24,35 @@ export function MyToolbar({ valueOfBag }) {
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const numberOfBag = (sessionStorage != null) ? Number.parseInt(sessionStorage.getItem('valueOfBag')) : 0;
     const userSave = localStorage.getItem('user')
-    const userInfo = JSON.parse(userSave)[0]
-    const navigate = useNavigate;
+    let userInfo;
+    if (userSave) {
+        userInfo = JSON.parse(userSave)[0];
+    }
+
+    const navigate = useNavigate();
     console.log("ULI", userInfo);
 
     function showMenu() {
         if (userInfo.isadmin) {
             return <>
-                <Link ><MenuItem key={'edit'} onClick={() => { navigate('/edit') }}>
-                    <Typography textAlign="center">{"Edit"}</Typography>
-                </MenuItem></Link>
-                <Link><MenuItem key={'logout'} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{"Sign Out"}</Typography>
-                </MenuItem></Link >
+                <Link to={'/edit'} style={{ textDecoration: 'none', color: 'black' }}><MenuItem key={'edit'}>
+                    < Typography textAlign="center">{"Edit"}</Typography>
+                </MenuItem ></Link >
+                <MenuItem key={'logout'} onClick={signOut}>
+                    < Typography textAlign="center">{"Sign Out"}</Typography>
+                </MenuItem >
             </>
         } else {
-            return <Link><MenuItem key={'logout'} onClick={handleCloseUserMenu}>
+            return <MenuItem key={'logout'} onClick={handleCloseUserMenu}>
                 <Typography textAlign="center">{"Sign Out"}</Typography>
-            </MenuItem></Link >
+            </MenuItem>
         }
+    }
+
+    function signOut() {
+        localStorage.removeItem('user')
+        sessionStorage.clear();
+        navigate('/')
     }
 
     const handleOpenNavMenu = (event) => {
