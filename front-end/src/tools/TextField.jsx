@@ -49,7 +49,8 @@ export function BorderTextAria() {
     );
 }
 
-export function SimpleTextField({ label }) {
+export function SimpleTextField({ label, calledFunction, value }) {
+
     return (
         <Box
             component="form"
@@ -62,12 +63,14 @@ export function SimpleTextField({ label }) {
             <TextField
                 id="outlined-required"
                 label={label}
+                value={value}
+                onChange={(e)=>calledFunction(e.target.value)}
             />
         </Box>
     );
 }
 
-export function PasswordTextField() {
+export function PasswordTextField({ calledFunction, value }) {
     return (
         <Box
             component="form"
@@ -82,12 +85,14 @@ export function PasswordTextField() {
                 label="Password"
                 type="password"
                 autoComplete="current-password"
+                value={value}
+                onChange={(e)=>calledFunction(e.target.value)}
             />
         </Box>
     );
 }
 
-export function NumberTextField() {
+export function NumberTextField({calledFunction, value}) {
     return (
         <Box
             component="form"
@@ -101,6 +106,8 @@ export function NumberTextField() {
                 type='number'
                 id="outlined-required"
                 label="Phone Number"
+                value={value}
+                onChange={(e)=>calledFunction(e.target.value)}
             />
         </Box>
     );

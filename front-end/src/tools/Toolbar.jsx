@@ -16,7 +16,7 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link, json } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const settings = ['Edit', 'Logout'];
 
@@ -24,9 +24,27 @@ export function MyToolbar({ valueOfBag }) {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const numberOfBag = (sessionStorage != null) ? Number.parseInt(sessionStorage.getItem('valueOfBag')) : 0;
-    console.log('nob', numberOfBag);
+    const userSave = localStorage.getItem('user')
+    const userInfo = JSON.parse(userSave)[0]
+    const navigate = useNavigate;
+    console.log("ULI", userInfo);
 
-    console.log('loc', sessionStorage);
+    function showMenu() {
+        if (userInfo.isadmin) {
+            return <>
+                <Link ><MenuItem key={'edit'} onClick={() => { navigate('/edit') }}>
+                    <Typography textAlign="center">{"Edit"}</Typography>
+                </MenuItem></Link>
+                <Link><MenuItem key={'logout'} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{"Sign Out"}</Typography>
+                </MenuItem></Link >
+            </>
+        } else {
+            return <Link><MenuItem key={'logout'} onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">{"Sign Out"}</Typography>
+            </MenuItem></Link >
+        }
+    }
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -42,11 +60,11 @@ export function MyToolbar({ valueOfBag }) {
     };
 
     const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
+        setAnchorElUser(null)
     };
 
     function showOption(orderList) {
-        if (false) {
+        if (userInfo) {
             // localStorage.clear()
             return <Box sx={{ flexGrow: 0 }}>
                 <Tooltip>
@@ -54,7 +72,7 @@ export function MyToolbar({ valueOfBag }) {
                         <CustomizedBadges value={valueOfBag} />
                     </IconButton>
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                        <Avatar alt="Guest">G</Avatar>
+                        <Avatar alt="Guest">{userInfo.firstname.slice(0, 1)}</Avatar>
                     </IconButton>
                 </Tooltip>
                 <Menu
@@ -73,15 +91,7 @@ export function MyToolbar({ valueOfBag }) {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                 >
-                    <Link to={'/edit'}>
-                        <MenuItem key={'edit'} onClick={handleCloseUserMenu}>
-                            <Typography textAlign="center">{"Edit"}</Typography>
-                        </MenuItem>
-                    </Link>
-
-                    <MenuItem key={'logout'} onClick={handleCloseUserMenu}>
-                        <Typography textAlign="center">{"Sign Out"}</Typography>
-                    </MenuItem>
+                    {showMenu()}
                 </Menu>
             </Box>
         } else {
@@ -91,7 +101,7 @@ export function MyToolbar({ valueOfBag }) {
                         <CustomizedBadges value={numberOfBag} />
                     </IconButton>
                 </Tooltip>
-                <Link to={'/Signin'}><Button
+                <Link to={'/signin'}><Button
                     variant='outlined'
                     sx={{
                         borderColor: 'white',

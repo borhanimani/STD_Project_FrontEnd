@@ -32,7 +32,7 @@ export function OutLineBtn({ textValue, clsName, calledFunction }) {
                 "&:hover": { bgcolor: deepOrange[50], borderColor: deepOrange[500] }
             }
         }
-        onClick={calledFunction()}
+        onClick={calledFunction}
     > {textValue}</Button >
 }
 
