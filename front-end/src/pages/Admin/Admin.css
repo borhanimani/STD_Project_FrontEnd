@@ -1,4 +1,4 @@
-.sign-page-container {
+.admin-page-container {
     /* background-color: rgb(246, 246, 246); */
     background-image: url('/src/assets/board-1854180_1920.jpg');
     background-size: cover;
@@ -25,7 +25,14 @@
     border: solid;
 }
 
-.text-box {
+.admin-progress-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.admin-text-box {
     width: 90px;
     font-size: 18px;
     text-align: center;
@@ -45,7 +52,7 @@
     }
 }
 
-.edit-box {
+.admin-edit-box {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -54,7 +61,7 @@
     height: 73%;
 }
 
-.select-box {
+.admin-select-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,7 +74,7 @@
     box-shadow: 0 0 5px rgb(71, 71, 71);
 }
 
-.item-view {
+.admin-item-view {
     background-color: white;
     margin: 10px;
     width: 65%;
@@ -76,7 +83,7 @@
     border-radius: 20px;
 }
 
-.box-grid {
+.admin-box-grid {
     background-color: white;
     display: flex;
     flex-direction: row;
@@ -91,7 +98,7 @@
     padding-right: 10px;
 }
 
-.delete-btns {
+.admin-delete-btns {
     display: flex;
     flex-direction: row;
     background-color: white;
@@ -100,26 +107,26 @@
     box-shadow: 0 0 5px rgb(71, 71, 71);
 }
 
-.del-cat-btn{
+.admin-del-cat-btn {
     margin: 10px !important;
 }
 
-.del-itm-btn{
+.admin-del-itm-btn {
     margin: 10px !important;
 }
 
-.add-btn {
+.admin-add-btn {
     width: 110px;
     height: 50px;
 }
 
-.img-box {
+.admin-img-box {
     width: 20%;
     height: 20%;
     border-radius: 20px;
 }
 
-.img-part {
+.admin-img-part {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -131,30 +138,31 @@
     padding-bottom: 5px;
 }
 
-.upload-btn {
-    border-radius: 15px !important;
+.admin-upload-btn {
+
+    border-radius: 15px;
     width: 300px;
     height: 100px;
 }
 
-.detail-part {
+.admin-detail-part {
     display: flex;
     flex-direction: row;
 }
 
-.detail-text-boxes {
+.admin-detail-text-boxes {
     display: flex;
     flex-direction: column;
     border-right: solid 1px rgb(152, 152, 152);
     width: 70%;
 }
 
-.detail-info-boxes {
+.admin-detail-info-boxes {
     display: flex;
     flex-direction: row;
 }
 
-.detail-item {
+.admin-detail-item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -162,7 +170,7 @@
     margin-left: 10px;
 }
 
-.action-part {
+.admin-action-part {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -171,13 +179,13 @@
     margin-right: 10px;
 }
 
-.change-btn {
+.admin-change-btn {
     width: 200px;
     height: 60px;
     background-color: rgb(5, 102, 5) !important;
 }
 
-.outline-btn {
+.admin-outline-btn {
     width: 200px !important;
     height: 50px !important;
 
@@ -185,7 +193,7 @@
 
 @media (max-width:920px) {
 
-    .sign-page-container {
+    .admin-sign-page-container {
         /* background-color: rgb(193, 193, 193); */
         background-image: url('/src/assets/board-1854180_1920.jpg');
         background-size: cover;
@@ -206,7 +214,7 @@
         border: solid;
     }
 
-    .select-box {
+    .admin-select-box {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -219,7 +227,7 @@
         box-shadow: 0 0 5px rgb(71, 71, 71);
     }
 
-    .box-grid {
+    .admin-box-grid {
         background-color: white;
         display: flex;
         flex-direction: row;
@@ -234,17 +242,17 @@
         padding-right: 10px;
     }
 
-    .add-btn {
+    .admin-add-btn {
         width: 100px;
         height: 40px;
     }
 
-    .detail-part {
+    .admin-detail-part {
         display: flex;
         flex-direction: column;
     }
 
-    .edit-box {
+    .admin-edit-box {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -253,7 +261,7 @@
         height: 100%;
     }
 
-    .item-view {
+    .admin-item-view {
         background-color: white;
         margin: 10px;
         width: 100%;
@@ -261,7 +269,7 @@
         border-radius: 20px;
     }
 
-    .img-part {
+    .admin-img-part {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -273,7 +281,7 @@
         padding-bottom: 5px;
     }
 
-    .img-box {
+    .admin-img-box {
         width: 60%;
         height: 20%;
         border-radius: 20px;
@@ -281,31 +289,31 @@
     }
 
 
-    .upload-btn {
+    .admin-upload-btn {
         border-radius: 15px !important;
         width: 200px;
         height: 50px;
         margin-bottom: 10px !important;
     }
 
-    .detail-part {
+    .admin-detail-part {
         display: flex;
         flex-direction: column;
     }
 
-    .detail-text-boxes {
+    .admin-detail-text-boxes {
         display: flex;
         flex-direction: column;
         border-right: solid 1px rgb(152, 152, 152);
         width: 100%;
     }
 
-    .detail-info-boxes {
+    .admin-detail-info-boxes {
         display: flex;
         flex-direction: column;
     }
 
-    .detail-item {
+    .admin-detail-item {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -313,7 +321,7 @@
         margin-left: 10px;
     }
 
-    .action-part {
+    .admin-action-part {
         display: flex;
         flex-direction: row-reverse;
         justify-content: space-evenly;
@@ -322,14 +330,24 @@
         margin-right: 10px;
     }
 
-    .change-btn {
+    .admin-change-btn {
         width: 130px;
         height: 40px;
         background-color: rgb(5, 102, 5) !important;
     }
 
-    .outline-btn {
+    .admin-outline-btn {
         width: 130px !important;
         height: 40px !important;
+    }
+
+    .admin-text-box {
+        width: 90px;
+        font-size: 16px;
+        text-align: center;
+        font-family: sans-serif;
+        margin: 0px;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
     }
 }

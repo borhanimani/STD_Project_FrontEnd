@@ -32,7 +32,7 @@ export function OutLineBtn({ textValue, clsName, calledFunction }) {
                 "&:hover": { bgcolor: deepOrange[50], borderColor: deepOrange[500] }
             }
         }
-        onClick={calledFunction()}
+        onClick={calledFunction}
     > {textValue}</Button >
 }
 
@@ -57,7 +57,7 @@ const VisuallyHiddenInput = styled('input')({
     width: 1,
 });
 
-export function UploadBtn({ clsName }) {
+export function UploadBtn({ clsName,calledFunction }) {
     return (
         <Button
             className={clsName}
@@ -67,8 +67,8 @@ export function UploadBtn({ clsName }) {
             tabIndex={-1}
             startIcon={<CloudUploadIcon />}
         >
-            Upload file
-            <VisuallyHiddenInput type="file" />
+            Upload Image
+            <VisuallyHiddenInput type="file" onChange={(e)=>{calledFunction(e.target.files[0])}}/>
         </Button>
     );
 }

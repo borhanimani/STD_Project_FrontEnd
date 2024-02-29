@@ -15,8 +15,7 @@ import { grey } from '@mui/material/colors';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Link, json } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Link, json, useNavigate } from 'react-router-dom';
 
 const settings = ['Edit', 'Logout'];
 
@@ -24,9 +23,37 @@ export function MyToolbar({ valueOfBag }) {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const numberOfBag = (sessionStorage != null) ? Number.parseInt(sessionStorage.getItem('valueOfBag')) : 0;
-    console.log('nob', numberOfBag);
+    const userSave = localStorage.getItem('user')
+    let userInfo;
+    if (userSave) {
+        userInfo = JSON.parse(userSave)[0];
+    }
 
-    console.log('loc', sessionStorage);
+    const navigate = useNavigate();
+    console.log("ULI", userInfo);
+
+    function showMenu() {
+        if (userInfo.isadmin) {
+            return <>
+                <Link to={'/edit'} style={{ textDecoration: 'none', color: 'black' }}><MenuItem key={'edit'}>
+                    < Typography textAlign="center">{"Edit"}</Typography>
+                </MenuItem ></Link >
+                <MenuItem key={'logout'} onClick={signOut}>
+                    < Typography textAlign="center">{"Sign Out"}</Typography>
+                </MenuItem >
+            </>
+        } else {
+            return <MenuItem key={'logout'} onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">{"Sign Out"}</Typography>
+            </MenuItem>
+        }
+    }
+
+    function signOut() {
+        localStorage.removeItem('user')
+        sessionStorage.clear();
+        navigate('/')
+    }
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -42,11 +69,11 @@ export function MyToolbar({ valueOfBag }) {
     };
 
     const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
+        setAnchorElUser(null)
     };
 
     function showOption(orderList) {
-        if (false) {
+        if (userInfo) {
             // localStorage.clear()
             return <Box sx={{ flexGrow: 0 }}>
                 <Tooltip>
@@ -54,7 +81,7 @@ export function MyToolbar({ valueOfBag }) {
                         <CustomizedBadges value={valueOfBag} />
                     </IconButton>
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                        <Avatar alt="Guest">G</Avatar>
+                        <Avatar alt="Guest">{userInfo.firstname.slice(0, 1)}</Avatar>
                     </IconButton>
                 </Tooltip>
                 <Menu
@@ -73,15 +100,7 @@ export function MyToolbar({ valueOfBag }) {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                 >
-                    <Link to={'/edit'}>
-                        <MenuItem key={'edit'} onClick={handleCloseUserMenu}>
-                            <Typography textAlign="center">{"Edit"}</Typography>
-                        </MenuItem>
-                    </Link>
-
-                    <MenuItem key={'logout'} onClick={handleCloseUserMenu}>
-                        <Typography textAlign="center">{"Sign Out"}</Typography>
-                    </MenuItem>
+                    {showMenu()}
                 </Menu>
             </Box>
         } else {
@@ -91,7 +110,7 @@ export function MyToolbar({ valueOfBag }) {
                         <CustomizedBadges value={numberOfBag} />
                     </IconButton>
                 </Tooltip>
-                <Link to={'/Signin'}><Button
+                <Link to={'/signin'}><Button
                     variant='outlined'
                     sx={{
                         borderColor: 'white',

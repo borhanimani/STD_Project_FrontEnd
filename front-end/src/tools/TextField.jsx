@@ -27,7 +27,7 @@ export function MyTextAria({ value, calledFunction }) {
     );
 }
 
-export function BorderTextAria() {
+export function BorderTextAria({ calledFunction, value }) {
     return (
         <Box
             component="form"
@@ -44,12 +44,15 @@ export function BorderTextAria() {
                 multiline
                 rows={3}
                 defaultValue=""
+                value={value}
+                onChange={(e) => calledFunction(e.target.value)}
             />
         </Box>
     );
 }
 
-export function SimpleTextField({ label }) {
+export function SimpleTextField({ label, calledFunction, value }) {
+
     return (
         <Box
             component="form"
@@ -62,12 +65,14 @@ export function SimpleTextField({ label }) {
             <TextField
                 id="outlined-required"
                 label={label}
+                value={value}
+                onChange={(e) => calledFunction(e.target.value)}
             />
         </Box>
     );
 }
 
-export function PasswordTextField() {
+export function PasswordTextField({ calledFunction, value }) {
     return (
         <Box
             component="form"
@@ -82,12 +87,14 @@ export function PasswordTextField() {
                 label="Password"
                 type="password"
                 autoComplete="current-password"
+                value={value}
+                onChange={(e) => calledFunction(e.target.value)}
             />
         </Box>
     );
 }
 
-export function NumberTextField() {
+export function NumberTextField({ calledFunction, value }) {
     return (
         <Box
             component="form"
@@ -101,6 +108,29 @@ export function NumberTextField() {
                 type='number'
                 id="outlined-required"
                 label="Phone Number"
+                value={value}
+                onChange={(e) => calledFunction(e.target.value)}
+            />
+        </Box>
+    );
+}
+
+export function NumberTextField2({ calledFunction, value }) {
+    return (
+        <Box
+            component="form"
+            sx={{
+                '& .MuiTextField-root': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+        >
+            <TextField
+                type='number'
+                id="outlined-required"
+                label=""
+                value={value}
+                onChange={(e) => calledFunction(e.target.value)}
             />
         </Box>
     );
