@@ -233,3 +233,43 @@ export async function buyOrder(path, body) {
         return error
     }
 }
+
+export function getComments(path) {
+    console.log('ff');
+    const requestOptions = {
+        method: "GET",
+        redirect: "follow"
+    };
+
+    try {
+        const a = fetch(`${urli}${path}`, requestOptions)
+            .then((response) => response.json())
+            .catch((error) => console.error(error));
+        return a;
+    } catch (error) {
+        return error
+    }
+}
+
+export async function addComment(path, body) {
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify(body);
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    try {
+        const result = fetch(`${urli}${path}`, requestOptions)
+            .then(response => response.json())
+            .catch(error => console.log('error', error));
+        return result
+    } catch (error) {
+        return error
+    }
+}
