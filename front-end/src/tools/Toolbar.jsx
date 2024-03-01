@@ -30,7 +30,6 @@ export function MyToolbar({ valueOfBag }) {
     }
 
     const navigate = useNavigate();
-    console.log("ULI", userInfo);
 
     function showMenu() {
         if (userInfo.isadmin) {
@@ -50,7 +49,7 @@ export function MyToolbar({ valueOfBag }) {
     }
 
     function signOut() {
-        localStorage.removeItem('user')
+        localStorage.clear();
         sessionStorage.clear();
         navigate('/')
     }

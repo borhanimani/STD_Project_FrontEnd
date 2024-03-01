@@ -17,8 +17,6 @@ import { RatingReadOnly } from './Rate';
 
 export function FoodCard({ clsName, information, calledFunction }) {
 
-    // const [countValue, setCountValue] = React.useState(0)
-
     const [resultNumber, setNumber] = React.useState(0);
 
     function manageNumber(isAdd) {
@@ -36,11 +34,11 @@ export function FoodCard({ clsName, information, calledFunction }) {
                 component="img"
                 alt="green iguana"
                 height="200"
-                image="/src/assets/pizza-halopino.jpg"
+                image={information.photolink}
             />
             <CardContent sx={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%' }} >
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginLeft: 10 }}>{information.title}</div>
+                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginLeft: 10 }}>{information.name}</div>
                     <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginRight: 10 }}>${Number.parseInt(information.price)}</div>
                 </div>
                 <div style={{ fontFamily: 'sans-serif', marginTop: 8, fontSize: 15, padding: 7, wordWrap: 'break-word', color: "gray" }}>{information.detail}</div>

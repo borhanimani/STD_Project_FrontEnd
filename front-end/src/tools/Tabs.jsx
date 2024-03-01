@@ -10,7 +10,11 @@ export function MenuTabs({ calledFunction, value }) {
     calledFunction(newValue);
   };
 
-  const tilteList = ['Pizza', 'Burger', 'Drinks', 'Fries']
+  const saves = sessionStorage.getItem('tabs')
+  let tilteList = [];
+  if (saves) {
+    tilteList = JSON.parse(saves)
+  }
 
   return (
     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
@@ -27,8 +31,9 @@ export function MenuTabs({ calledFunction, value }) {
         centered
       >
         {
+          // printTabs() 
           tilteList.map((title) => {
-            return <Tab value={title} label={title} />
+            return <Tab value={title.id} label={title.name} />
           })
         }
         {/* <Tab value="Pizza" label="Pizza" />
