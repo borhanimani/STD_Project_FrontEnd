@@ -13,7 +13,6 @@ export default function MenuPage() {
     const [menu, setMenu] = useState([])
     const [tabValue, setTabValue] = useState()
     const [orderList, setOrderList] = useState("")
-    const [countList, setCountList] = useState([])
     const [progressStatus, setProgressStatus] = useState('hidden')
 
     getTabItems();
@@ -34,13 +33,11 @@ export default function MenuPage() {
         if (number > 0) {
             console.log('ord', info);
             console.log('number', number);
-            const newOrder = info;
-            const orderCount = number;
+            const newOrder = Object.assign(info, { 'count': number });
+            console.log('ff', newOrder);
             let newList = [...orderList, newOrder];
-            let newNumberList = [...countList, orderCount]
             sessionStorage.setItem('orderList', JSON.stringify(newList))
             sessionStorage.setItem('valueOfBag', JSON.stringify(newList.length))
-            sessionStorage.setItem('countList', JSON.stringify(newNumberList))
             setOrderList(newList);
             setCountList(newNumberList)
         } else {
@@ -63,7 +60,6 @@ export default function MenuPage() {
         <div className="menu-bar"><CircularColor showValue={progressStatus} /> <MenuTabs calledFunction={getFilteredItem} value={tabValue} /></div>
         <div className="item-box">
             {menu.map((item) => {
-                console.log('iteeem', item);
                 return <FoodCard clsName={'food'} information={item} calledFunction={makeOrder} />
             })}
         </div>

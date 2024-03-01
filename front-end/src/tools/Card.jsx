@@ -53,7 +53,17 @@ export function FoodCard({ clsName, information, calledFunction }) {
     );
 }
 
-export function CartCard({ clsName }) {
+export function CartCard({ clsName, calledFunctionBuy, info }) {
+
+    let value = 0
+    info.map((item) => {
+        value += (Number.parseInt(item.count) * Number.parseFloat(item.price));
+    })
+    console.log('vallll', value);
+
+    function buy() {
+        calledFunctionBuy(value)
+    }
 
     return (
         <Card className={clsName + '-container'}>
@@ -66,22 +76,24 @@ export function CartCard({ clsName }) {
             <CardContent sx={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%' }} >
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                     <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginLeft: 10 }}>Total</div>
-                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginRight: 40 }}>$13.88</div>
+                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginRight: 40 }}>{`$${value}`}</div>
                 </div>
                 <div style={{ fontFamily: 'sans-serif', marginTop: 8, fontSize: 15, padding: 7, wordWrap: 'break-word', color: "gray" }}>Delivery Free</div>
             </CardContent>
             <CardActions sx={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                 <div style={{ marginRight: 30 }}>
-                    <FillColorBtn textValue={'Buy'} clsName={'add-to-cart-btn'} />
+                    <FillColorBtn textValue={'Buy'} clsName={'add-to-cart-btn'} calledFunction={buy} />
                 </div>
             </CardActions>
         </Card>
     );
 }
 
-export function OrderCard({ clsName }) {
+export function OrderCard({ clsName, information, calledFunctionDelete }) {
 
-    const [value, setValue] = React.useState(0);
+    function deleteInfo() {
+        calledFunctionDelete(information)
+    }
 
     return (
         <Card className={clsName + '-container'}>
@@ -90,19 +102,19 @@ export function OrderCard({ clsName }) {
                 component="img"
                 alt="green iguana"
                 height="200"
-                image="/src/assets/pizza-halopino.jpg"
+                image={information.photolink}
             />
             <CardContent sx={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%', borderRight: 'solid', marginRight: 0 }} >
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginLeft: 10 }}>pizaa-Halopino</div>
-                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginRight: 50 }}>$13.88</div>
+                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginLeft: 10 }}>{information.name}</div>
+                    <div style={{ fontSize: 30, margin: 5, fontWeight: 'bold', color: 'rgb(56, 56, 56)', marginRight: 50 }}>{`$${information.price}`}</div>
                 </div>
-                <div style={{ fontFamily: 'sans-serif', marginTop: 8, fontSize: 15, padding: 7, wordWrap: 'break-word', color: "gray" }}>cheese,halopino,sause,onion</div>
+                <div style={{ fontFamily: 'sans-serif', marginTop: 8, fontSize: 15, padding: 7, wordWrap: 'break-word', color: "gray" }}>{information.detail}</div>
             </CardContent>
             <CardActions sx={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginRight: 2 }}>
                 <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', width: '100%', marginLeft: 10, marginRight: 30 }}>
-                    <Counter />
-                    <DeleteBtn />
+                    <Counter2 value={information.count} />
+                    <DeleteBtn calledFunction={deleteInfo} />
                 </div>
 
             </CardActions>
@@ -163,6 +175,17 @@ export function Counter({ calledFunction, value }) {
             <IconButton sx={{ bgcolor: deepOrange[500], width: 40, "&:hover": { bgcolor: deepOrange[700] } }} onClick={() => calledFunction(true)}>
                 <AddIcon sx={{ width: 30, color: 'white' }} />
             </IconButton>
+        </div>
+    </>
+}
+
+export function Counter2({ calledFunction, value }) {
+    // const [value, setValue] = React.useState(0);
+    // calledFunction(value)
+
+    return <>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div contentEditable='false' style={{ fontSize: 40, margin: 2, fontFamily: 'sans-serif', padding: 3, marginRight: 5, marginLeft: 5 }} aria-disabled={true} >{value}</div>
         </div>
     </>
 }

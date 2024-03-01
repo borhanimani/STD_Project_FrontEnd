@@ -19,10 +19,11 @@ import { Link, json, useNavigate } from 'react-router-dom';
 
 const settings = ['Edit', 'Logout'];
 
-export function MyToolbar({ valueOfBag }) {
+export function MyToolbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const numberOfBag = (sessionStorage != null) ? Number.parseInt(sessionStorage.getItem('valueOfBag')) : 0;
+    console.log('NOB', numberOfBag);
     const userSave = localStorage.getItem('user')
     let userInfo;
     if (userSave) {
@@ -42,7 +43,7 @@ export function MyToolbar({ valueOfBag }) {
                 </MenuItem >
             </>
         } else {
-            return <MenuItem key={'logout'} onClick={handleCloseUserMenu}>
+            return <MenuItem key={'logout'} onClick={signOut}>
                 <Typography textAlign="center">{"Sign Out"}</Typography>
             </MenuItem>
         }
@@ -77,7 +78,7 @@ export function MyToolbar({ valueOfBag }) {
             return <Box sx={{ flexGrow: 0 }}>
                 <Tooltip>
                     <IconButton sx={{ marginRight: 1 }}>
-                        <CustomizedBadges value={valueOfBag} />
+                        <CustomizedBadges value={numberOfBag} />
                     </IconButton>
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                         <Avatar alt="Guest">{userInfo.firstname.slice(0, 1)}</Avatar>

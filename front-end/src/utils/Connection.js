@@ -210,3 +210,26 @@ export function getTabItemsMenu(path, catId) {
         return error
     }
 }
+
+export async function buyOrder(path, body) {
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify(body);
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    try {
+        const result = fetch(`${urli}${path}`, requestOptions)
+            .then(response => response.json())
+            .catch(error => console.log('error', error));
+        return result
+    } catch (error) {
+        return error
+    }
+}

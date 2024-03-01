@@ -19,9 +19,10 @@ export default function SignInPage() {
             setShowProgress('visible')
             const param = { "username": username, "password": password }
             try {
-                get('/signin',param).then((result) => {
+                get('/signin', param).then((result) => {
                     if (result.length != 0) {
                         setShowProgress('hidden');
+                        sessionStorage.clear();
                         localStorage.setItem('user', JSON.stringify(result));
                         navigate('/')
                     } else {

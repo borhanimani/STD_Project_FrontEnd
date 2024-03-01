@@ -26,8 +26,8 @@ export default function SignUpPage() {
                     if (result.length == 0) {
                         console.log(result);
                         setShowProgress('hidden');
+                        navigate('/signin')
                         alert("User Added Successfuly")
-                        signin();
                     }
                 })
             } catch (error) {
