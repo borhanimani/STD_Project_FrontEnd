@@ -18,4 +18,4 @@ This web application has guest, user, and admin roles. A guest, just can visit t
 - JavaScript
 
 -----TECHNOLOGIES-----
-- Material ui
+- Material UI
