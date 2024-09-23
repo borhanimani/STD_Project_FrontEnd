@@ -1,6 +1,7 @@
 .admin-page-container {
     /* background-color: rgb(246, 246, 246); */
     background-image: url('/src/assets/board-1854180_1920.jpg');
+    /* background-image: url('https://res.cloudinary.com/dya4ginvl/image/upload/skbzg50mukout5mhuyjf?_a=BAMCcSP80'); */
     background-size: cover;
     display: flex;
     flex-direction: column;
