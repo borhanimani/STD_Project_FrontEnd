@@ -9,7 +9,7 @@ import { CommentCard } from '/src/tools/Card';
 
 export default function HomePage() {
 
-    const commentList = [{ name: 'Harry', detail: 'dpflskajg;lkdsjg;lskadakdfjlkajf;aslkdfj;sdgj;dglskjg;sdklgj;ldsjgskdgjas;dlkgjjg;sldkjga;lsdkjgsl;dkjga;skldgjdjs;g;lskdjg;sldgs', rate: "1" }]
+    const commentList = [{ name: 'Harry', detail: 'This fastfood has a great pizza, specially the pepperony pizza is best. The tomato sause has a great taste and you can smell the onion with tomato and pepperony that mixed together and made it tasty! ', rate: "1" }]
     const [list, setList] = React.useState(commentList);
 
     function makeComment(commentParams) {
