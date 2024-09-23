@@ -7,6 +7,8 @@ https://github.com/borhanimani/STD_Project_FrontEnd.git
 This is a demo web project which has a frontend and backend parts. This is frontend part. The project is about a resturant fastfood which a user can select, order and buy foods. Also, web admin can manage the website. (I explained it in -----FRONTEND PART-----)
 
 * You can visit the backend part from this link: https://github.com/borhanimani/STD_Project_BackEnd.git
+* you can Enter with username example (user): username: user 1, password: 123456
+* you can Enter with username example (admin): username: admin, password: 123456
 
 -----FRONTEND PART-----
 
