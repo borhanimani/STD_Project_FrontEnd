@@ -153,7 +153,7 @@ export function MyToolbar() {
                             textDecoration: 'none',
                         }}
                     >
-                        PizzaB
+                        Pizza project
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -217,7 +217,7 @@ export function MyToolbar() {
                             textDecoration: 'none',
                         }}
                     >
-                        PizzaB
+                        Pizza Project
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Link to={'/'} style={{ textDecoration: 'none' }}>
